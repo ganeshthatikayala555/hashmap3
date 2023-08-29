@@ -1,0 +1,30 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+public class SockPairsCounter {
+    public static void main(String[] args) {
+        int[] socks = { 10, 20, 20, 10, 10, 30, 50, 10, 20 };
+        int pairs = countSockPairs(socks);
+        System.out.println("Number of pairs: " + pairs);
+    }
+
+    public static int countSockPairs(int[] socks) {
+        Map<Integer, Integer> colorCount = new HashMap<>();
+
+        // Count the occurrences of each sock color
+        for (int color : socks) {
+            colorCount.put(color, colorCount.getOrDefault(color, 0) + 1);
+        }
+
+        // Calculate the number of pairs for each color using an iterator
+        int totalPairs = 0;
+        Iterator<Integer> iterator = colorCount.values().iterator();
+        while (iterator.hasNext()) {
+            int count = iterator.next();
+            totalPairs += count / 2;
+        }
+
+        return totalPairs;
+    }
+}
