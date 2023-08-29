@@ -1,0 +1,26 @@
+import java.util.*;
+public class Hello{
+     public static void main(String []args){
+        ArrayList<Integer>list=new ArrayList<>();
+        list.add(4);
+        list.add(8);
+        list.add(34);
+        list.add(4);
+        list.add(4);
+        list.add(34);
+        int result=call(list);
+        System.out.println(result);
+     }
+     public static int call(List<Integer>list){
+         Map<Integer,Integer>mymap=new HashMap<>(); 
+         for(int color:list){
+            mymap.put(color, mymap.getOrDefault(color, 0) + 1);
+         }
+         int totalpairs=0;
+         for(int count:mymap.values()){
+             totalpairs+=count/2;
+         }
+              
+        return totalpairs;
+     }
+}
